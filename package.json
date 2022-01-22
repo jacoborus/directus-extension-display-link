@@ -1,0 +1,29 @@
+{
+  "name": "directus-extension-display-link",
+  "description": "Display URLs with an open in new tab icon link in Directus 9",
+  "version": "1.0.0",
+  "author": "Jacobo Tabernero Rey <jacoborus@gmail.com>",
+  "keywords": [
+    "directus",
+    "directus-extension",
+    "directus-custom-display",
+    "link",
+    "url",
+    "display-link",
+    "display-url"
+  ],
+  "directus:extension": {
+    "type": "display",
+    "path": "dist/index.js",
+    "source": "src/index.ts",
+    "host": "^9.4.3"
+  },
+  "scripts": {
+    "build": "directus-extension build"
+  },
+  "devDependencies": {
+    "@directus/extensions-sdk": "9.4.3",
+    "typescript": "^4.5.5",
+    "vue": "^3.2.28"
+  }
+}
