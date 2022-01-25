@@ -1,7 +1,7 @@
 {
   "name": "directus-extension-display-link",
   "description": "Display URLs with an open in new tab icon link in Directus 9",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Jacobo Tabernero Rey <jacoborus@gmail.com>",
   "keywords": [
     "directus",
@@ -19,7 +19,8 @@
     "host": "^9.4.3"
   },
   "scripts": {
-    "build": "directus-extension build"
+    "build": "directus-extension build",
+    "dev": "directus-extension build --watch"
   },
   "devDependencies": {
     "@directus/extensions-sdk": "9.4.3",

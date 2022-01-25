@@ -1,7 +1,7 @@
 <template>
   <div>
     <a :href="value" target="_blank" @click.stop>
-      <v-icon name="open_in_new" left />
+      <v-icon class="extension-display-link__icon" name="open_in_new" left />
     </a>
     {{value}}
   </div>
@@ -19,3 +19,9 @@ export default defineComponent({
   },
 });
 </script>
+
+<style>
+.extension-display-link__icon:hover {
+  --v-icon-color: var(--primary);
+}
+</style>
