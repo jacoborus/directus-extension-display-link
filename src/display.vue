@@ -15,7 +15,7 @@
     <transition name="fade">
       <v-icon
         v-if="showClipboard && (!showUrl || hover)"
-        v-tooltip="'Copy to clipboard'"
+        v-tooltip="`Copy to clipboard \n ${href}`"
         class="ext-display-link__clip"
         right
         name="content_copy"
@@ -61,14 +61,6 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
-    showPrefix: {
-      type: Boolean,
-      default: false,
-    },
-    showSuffix: {
-      type: Boolean,
-      default: false,
-    },
     prefix: {
       type: String,
       default: "",
@@ -76,6 +68,14 @@ export default defineComponent({
     suffix: {
       type: String,
       default: "",
+    },
+    showPrefix: {
+      type: Boolean,
+      default: false,
+    },
+    showSuffix: {
+      type: Boolean,
+      default: false,
     },
   },
   setup(props) {

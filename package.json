@@ -1,6 +1,6 @@
 {
   "name": "directus-extension-display-link",
-  "description": "Display URLs with an open in new tab icon link in Directus 9",
+  "description": "Display URLs, phone numbers, and emails with a link button in Directus 9",
   "version": "1.4.0",
   "author": "Jacobo Tabernero Rey <jacoborus@gmail.com>",
   "keywords": [

@@ -5,7 +5,7 @@ export default defineDisplay({
   id: "extension-display-link",
   name: "Link",
   icon: "open_in_new",
-  description: "Display URLs with an open in new tab icon link",
+  description: "Display URLs, phone numbers, and emails with a link button",
   component: DisplayComponent,
   options: [
     {
@@ -93,36 +93,6 @@ export default defineDisplay({
       },
     },
     {
-      field: "showPrefix",
-      name: "Show prefix",
-      type: "boolean",
-      meta: {
-        interface: "boolean",
-        width: "half",
-        options: {
-          label: "Display prefix in view",
-        },
-      },
-      schema: {
-        default_value: false,
-      },
-    },
-    {
-      field: "showSuffix",
-      name: "Show suffix",
-      type: "boolean",
-      meta: {
-        interface: "boolean",
-        width: "half",
-        options: {
-          label: "Display suffix in view",
-        },
-      },
-      schema: {
-        default_value: false,
-      },
-    },
-    {
       field: "prefix",
       name: "$t:displays.formatted-value.prefix",
       type: "string",
@@ -153,6 +123,36 @@ export default defineDisplay({
       },
       schema: {
         default_value: "",
+      },
+    },
+    {
+      field: "showPrefix",
+      name: "Show prefix",
+      type: "boolean",
+      meta: {
+        interface: "boolean",
+        width: "half",
+        options: {
+          label: "Display prefix in view",
+        },
+      },
+      schema: {
+        default_value: false,
+      },
+    },
+    {
+      field: "showSuffix",
+      name: "Show suffix",
+      type: "boolean",
+      meta: {
+        interface: "boolean",
+        width: "half",
+        options: {
+          label: "Display suffix in view",
+        },
+      },
+      schema: {
+        default_value: false,
       },
     },
   ],
