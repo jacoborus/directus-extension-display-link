@@ -3,7 +3,7 @@
     <a :href="href" target="_blank" @click.stop>
       <v-icon
         v-if="showLinkButton"
-        v-tooltip="`Open ${href}`"
+        v-tooltip="`${verb} ${url}`"
         class="ext-display-link__icon"
         :name="icon"
         left
@@ -31,10 +31,16 @@
 import { defineComponent } from "vue";
 import { useStores } from "@directus/extensions-sdk";
 
-const kinds = {
+const protocols = {
   url: "",
   email: "mailto:",
   tel: "tel:",
+};
+
+const verbs = {
+  url: "Open",
+  email: "Send email to",
+  tel: "Call",
 };
 
 export default defineComponent({
@@ -89,15 +95,18 @@ export default defineComponent({
   setup(props) {
     const { useNotificationsStore } = useStores();
     const notifStore = useNotificationsStore();
-    const url = `${props.prefix || ""}${props.value}${props.suffix || ""}`;
+
     const prefix = props.showPrefix ? props.prefix : "";
     const suffix = props.showSuffix ? props.suffix : "";
-    const kind = kinds[props.kind];
-    const href = `${kind}${url}`;
+    const url = `${prefix}${props.value}${suffix}`;
+    const protocol = protocols[props.kind];
+    const href = `${protocol}${url}`;
+    const verb = verbs[props.kind];
 
     return {
+      verb,
       href,
-      url: `${prefix}${props.value}${suffix}`,
+      url,
       copyToClipboard,
     };
 
