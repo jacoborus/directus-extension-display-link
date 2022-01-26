@@ -1,7 +1,7 @@
 {
   "name": "directus-extension-display-link",
   "description": "Display URLs, phone numbers, and emails with a link button in Directus 9",
-  "version": "1.5.0",
+  "version": "1.5.1",
   "author": "Jacobo Tabernero Rey <jacoborus@gmail.com>",
   "keywords": [
     "directus",
@@ -20,7 +20,8 @@
   },
   "scripts": {
     "build": "directus-extension build",
-    "dev": "directus-extension build --watch -o ../extensions/displays/link/index.js"
+    "dev": "directus-extension build --watch -o ../extensions/displays/link/index.js",
+    "prepublish": "npm run build"
   },
   "devDependencies": {
     "@directus/extensions-sdk": "9.4.3",

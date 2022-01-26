@@ -1,35 +1,38 @@
 <template>
-  <v-hover v-slot="{ hover }" class="ext-display-link">
-    <a :href="href" target="_blank" @click.stop>
-      <v-icon
-        v-if="showLinkButton"
-        v-tooltip="`${verb} ${url}`"
-        class="ext-display-link__icon"
-        :name="icon"
-        left
-      />
-    </a>
+  <value-null v-if="value === null" />
+  <template v-else>
+    <v-hover v-slot="{hover}" class="ext-display-link">
+      <div class="ext-display-link__wrapper">
+        <a :href="href" target="_blank" @click.stop>
+          <v-icon
+            v-if="showLinkButton"
+            v-tooltip="`${verb} ${url}`"
+            class="ext-display-link__icon"
+            :name="icon"
+            left
+          />
+        </a>
 
-    <span v-if="showUrl" :class="[font]" class="ext-display-link__url">
-      {{ url }}
-    </span>
+        <span v-if="showUrl" :class="[font]" class="ext-display-link__url">{{url}}</span>
 
-    <transition name="fade">
-      <v-icon
-        v-if="showClipboard && (!showUrl || hover)"
-        v-tooltip="`Copy to clipboard \n ${href}`"
-        class="ext-display-link__clip"
-        right
-        name="content_copy"
-        @click.stop="copyToClipboard"
-      />
-    </transition>
-  </v-hover>
+        <transition name="fade">
+          <v-icon
+            v-if="showClipboard && (!showUrl || hover)"
+            v-tooltip="`Copy to clipboard \n ${href}`"
+            class="ext-display-link__clip"
+            right
+            name="content_copy"
+            @click.stop="copyToClipboard"
+          />
+        </transition>
+      </div>
+    </v-hover>
+  </template>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import { useStores } from "@directus/extensions-sdk";
+import {defineComponent} from "vue";
+import {useStores} from "@directus/extensions-sdk";
 
 const protocols = {
   url: "",
@@ -93,7 +96,7 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const { useNotificationsStore } = useStores();
+    const {useNotificationsStore} = useStores();
     const notifStore = useNotificationsStore();
 
     const prefix = props.showPrefix ? props.prefix : "";
@@ -133,9 +136,12 @@ export default defineComponent({
 
 <style>
 .ext-display-link {
-  display: flex;
+  display: inline-block;
   max-width: 100%;
   overflow: hidden;
+}
+.ext-display-link__wrapper {
+  display: flex;
   line-height: 18px;
 }
 .ext-display-link__url {
