@@ -68,13 +68,37 @@ export default defineDisplay({
       type: "boolean",
       meta: {
         interface: "boolean",
-        width: "full",
+        width: "half",
         options: {
-          label: "Display the URL between the buttons",
+          label: "Display the URL",
         },
       },
       schema: {
         default_value: true,
+      },
+    },
+    {
+      field: "font",
+      name: "$t:displays.formatted-value.font",
+      meta: {
+        width: "half",
+        interface: "select-dropdown",
+        options: {
+          choices: [
+            {
+              text: "$t:displays.formatted-value.font_sans_serif",
+              value: "sans-serif",
+            },
+            { text: "$t:displays.formatted-value.font_serif", value: "serif" },
+            {
+              text: "$t:displays.formatted-value.font_monospace",
+              value: "monospace",
+            },
+          ],
+        },
+      },
+      schema: {
+        default_value: "sans-serif",
       },
     },
     {

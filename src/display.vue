@@ -10,7 +10,9 @@
       />
     </a>
 
-    <span v-if="showUrl" class="ext-display-link__url">{{ url }}</span>
+    <span v-if="showUrl" :class="[font]" class="ext-display-link__url">
+      {{ url }}
+    </span>
 
     <transition name="fade">
       <v-icon
@@ -56,6 +58,12 @@ export default defineComponent({
     showUrl: {
       type: Boolean,
       default: true,
+    },
+    font: {
+      type: String,
+      default: "sans-serif",
+      validator: (value: string) =>
+        ["sans-serif", "serif", "monospace"].includes(value),
     },
     showClipboard: {
       type: Boolean,
@@ -124,6 +132,15 @@ export default defineComponent({
 .ext-display-link__url {
   flex-shrink: 1;
   overflow: hidden;
+}
+.ext-display-link__url.sans-serif {
+  font-family: var(--family-sans-serif);
+}
+.ext-display-link__url.serif {
+  font-family: var(--family-serif);
+}
+.ext-display-link__url.monospace {
+  font-family: var(--family-monospace);
 }
 .ext-display-link__icon,
 .ext-display-link__clip {
