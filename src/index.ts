@@ -36,18 +36,18 @@ export default defineDisplay({
       },
     },
     {
-      field: "hideValue",
-      name: "Hide URL",
+      field: "showLinkButton",
+      name: "Show link button",
       type: "boolean",
       meta: {
         interface: "boolean",
         width: "half",
         options: {
-          label: "Just display the icon",
+          label: "Display a link button",
         },
       },
       schema: {
-        default_value: false,
+        default_value: true,
       },
     },
     {
@@ -60,6 +60,36 @@ export default defineDisplay({
       },
       schema: {
         default_value: "open_in_new",
+      },
+    },
+    {
+      field: "showUrl",
+      name: "Show URL",
+      type: "boolean",
+      meta: {
+        interface: "boolean",
+        width: "full",
+        options: {
+          label: "Display the URL between the buttons",
+        },
+      },
+      schema: {
+        default_value: true,
+      },
+    },
+    {
+      field: "showClipboard",
+      name: "Copy to clipboard",
+      type: "boolean",
+      meta: {
+        interface: "boolean",
+        width: "full",
+        options: {
+          label: "Display a copy to clipboard button",
+        },
+      },
+      schema: {
+        default_value: true,
       },
     },
     {
