@@ -1,39 +1,39 @@
 <template>
-  <v-hover class="ext-display-link" v-slot="{hover}">
+  <v-hover v-slot="{ hover }" class="ext-display-link">
     <a :href="href" target="_blank" @click.stop>
       <v-icon
         v-if="showLinkButton"
-        class="ext-display-link__icon"
         v-tooltip="`Open ${href}`"
+        class="ext-display-link__icon"
         :name="icon"
         left
       />
     </a>
 
-    <span class="ext-display-link__url" v-if="showUrl">{{url}}</span>
+    <span v-if="showUrl" class="ext-display-link__url">{{ url }}</span>
 
     <transition name="fade">
       <v-icon
         v-if="showClipboard && (!showUrl || hover)"
-        class="ext-display-link__clip"
         v-tooltip="'Copy to clipboard'"
-        @click.stop="copyToClipboard"
+        class="ext-display-link__clip"
         right
         name="content_copy"
+        @click.stop="copyToClipboard"
       />
     </transition>
   </v-hover>
 </template>
 
 <script lang="ts">
-import {defineComponent} from 'vue';
-import {useStores} from '@directus/extensions-sdk';
+import { defineComponent } from "vue";
+import { useStores } from "@directus/extensions-sdk";
 
 const kinds = {
-  url: '',
-  email: 'mailto:',
-  tel: 'tel:'
-}
+  url: "",
+  email: "mailto:",
+  tel: "tel:",
+};
 
 export default defineComponent({
   props: {
@@ -43,71 +43,74 @@ export default defineComponent({
     },
     kind: {
       type: String,
-      default: 'url'
+      default: "url",
     },
     showLinkButton: {
       type: Boolean,
-      default: true
+      default: true,
     },
     icon: {
       type: String,
-      default: 'open_in_new',
+      default: "open_in_new",
     },
     showUrl: {
       type: Boolean,
-      default: true
+      default: true,
     },
     showClipboard: {
       type: Boolean,
-      default: true
+      default: true,
     },
     showPrefix: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showSuffix: {
       type: Boolean,
-      default: false
+      default: false,
     },
     prefix: {
       type: String,
-      default: ''
+      default: "",
     },
     suffix: {
       type: String,
-      default: ''
+      default: "",
     },
   },
   setup(props) {
-    const {useNotificationsStore} = useStores();
+    const { useNotificationsStore } = useStores();
     const notifStore = useNotificationsStore();
-    const url = `${props.prefix || ''}${props.value}${props.suffix || ''}`
-    const prefix = props.showPrefix ? props.prefix : ''
-    const suffix = props.showSuffix ? props.suffix : ''
-    const kind = kinds[props.kind]
-    const href = `${kind}${url}`
+    const url = `${props.prefix || ""}${props.value}${props.suffix || ""}`;
+    const prefix = props.showPrefix ? props.prefix : "";
+    const suffix = props.showSuffix ? props.suffix : "";
+    const kind = kinds[props.kind];
+    const href = `${kind}${url}`;
 
     return {
       href,
       url: `${prefix}${props.value}${suffix}`,
-      copyToClipboard
-    }
+      copyToClipboard,
+    };
 
     async function copyToClipboard() {
       try {
         await navigator?.clipboard?.writeText(href);
         notifStore.add({
-          title: 'Copied!',
-          type: 'success',
-        })
-      } catch (err: any) {
-        notifStore.add({
-          title: 'Error!',
-          type: 'error',
-        })
+          title: "Copied!",
+          type: "success",
+        });
+      } catch (err: unknown) {
+        if (err instanceof Error) {
+          notifStore.add({
+            title: "Error!",
+            type: "error",
+            error: err,
+          });
+        }
       }
     }
-  }
+  },
 });
 </script>
 
