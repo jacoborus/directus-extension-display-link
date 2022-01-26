@@ -9,6 +9,33 @@ export default defineDisplay({
   component: DisplayComponent,
   options: [
     {
+      field: "hideValue",
+      name: "Hide URL",
+      type: "boolean",
+      meta: {
+        interface: "boolean",
+        width: "half",
+        options: {
+          label: "Just display the icon",
+        },
+      },
+      schema: {
+        default_value: false,
+      },
+    },
+    {
+      field: "icon",
+      name: "$t:displays.formatted-value.icon",
+      type: "string",
+      meta: {
+        width: "half",
+        interface: "select-icon",
+      },
+      schema: {
+        default_value: "open_in_new",
+      },
+    },
+    {
       field: "showPrefix",
       name: "Show prefix",
       type: "boolean",
@@ -69,21 +96,6 @@ export default defineDisplay({
       },
       schema: {
         default_value: "",
-      },
-    },
-    {
-      field: "hideValue",
-      name: "Hide URL",
-      type: "boolean",
-      meta: {
-        interface: "boolean",
-        width: "half",
-        options: {
-          label: "Just display the icon",
-        },
-      },
-      schema: {
-        default_value: false,
       },
     },
   ],

@@ -1,7 +1,7 @@
 <template>
   <div>
     <a :href="href" target="_blank" @click.stop>
-      <v-icon class="extension-display-link__icon" name="open_in_new" left />
+      <v-icon class="extension-display-link__icon" :name="icon" left />
     </a>
     <template v-if="!hideValue">{{url}}</template>
   </div>
@@ -12,6 +12,14 @@ import {defineComponent} from 'vue';
 
 export default defineComponent({
   props: {
+    hideValue: {
+      type: Boolean,
+      default: false
+    },
+    icon: {
+      type: String,
+      default: 'open_in_new',
+    },
     value: {
       type: String,
       default: null,
@@ -31,10 +39,6 @@ export default defineComponent({
     suffix: {
       type: String,
       default: ''
-    },
-    hideValue: {
-      type: Boolean,
-      default: false
     },
   },
   setup(props) {

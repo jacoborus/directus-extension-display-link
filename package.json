@@ -1,7 +1,7 @@
 {
   "name": "directus-extension-display-link",
   "description": "Display URLs with an open in new tab icon link in Directus 9",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "author": "Jacobo Tabernero Rey <jacoborus@gmail.com>",
   "keywords": [
     "directus",
