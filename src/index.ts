@@ -9,6 +9,33 @@ export default defineDisplay({
   component: DisplayComponent,
   options: [
     {
+      field: "kind",
+      name: "Type",
+      meta: {
+        width: "full",
+        interface: "select-dropdown",
+        options: {
+          choices: [
+            {
+              text: "URL",
+              value: "url",
+            },
+            {
+              text: "Telephone",
+              value: "tel",
+            },
+            {
+              text: "Email",
+              value: "email",
+            },
+          ],
+        },
+      },
+      schema: {
+        default_value: "url",
+      },
+    },
+    {
       field: "hideValue",
       name: "Hide URL",
       type: "boolean",
@@ -70,7 +97,7 @@ export default defineDisplay({
       name: "$t:displays.formatted-value.prefix",
       type: "string",
       meta: {
-        width: "full",
+        width: "half",
         interface: "input",
         options: {
           label: "$t:displays.formatted-value.prefix_label",
@@ -87,7 +114,7 @@ export default defineDisplay({
       name: "$t:displays.formatted-value.suffix",
       type: "string",
       meta: {
-        width: "full",
+        width: "half",
         interface: "input",
         options: {
           label: "$t:displays.formatted-value.suffix_label",

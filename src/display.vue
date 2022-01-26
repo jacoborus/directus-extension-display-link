@@ -10,8 +10,18 @@
 <script lang="ts">
 import {defineComponent} from 'vue';
 
+const kinds = {
+  url: '',
+  email: 'mailto:',
+  tel: 'tel:'
+}
+
 export default defineComponent({
   props: {
+    kind: {
+      type: String,
+      default: 'url'
+    },
     hideValue: {
       type: Boolean,
       default: false
@@ -42,9 +52,11 @@ export default defineComponent({
     },
   },
   setup(props) {
-    const href = `${props.prefix || ''}${props.value}${props.suffix || ''}`
+    const url = `${props.prefix || ''}${props.value}${props.suffix || ''}`
     const prefix = props.showPrefix ? props.prefix : ''
     const suffix = props.showSuffix ? props.suffix : ''
+    const kind = kinds[props.kind]
+    const href = `${kind}${url}`
     return {
       href,
       url: `${prefix}${props.value}${suffix}`
