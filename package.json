@@ -1,7 +1,7 @@
 {
   "name": "directus-extension-display-link",
   "description": "Display URLs, phone numbers, and emails with a link button in Directus 9",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "author": "Jacobo Tabernero Rey <jacoborus@gmail.com>",
   "keywords": [
     "directus",
