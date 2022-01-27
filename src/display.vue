@@ -13,12 +13,12 @@
           />
         </a>
 
-        <span v-if="showUrl" :class="[font]" class="ext-display-link__url">{{url}}</span>
+        <span v-if="showUrl" :class="[font]" class="ext-display-link__url">{{displayUrl}}</span>
 
         <transition name="fade">
           <v-icon
             v-if="showClipboard && (!showUrl || hover)"
-            v-tooltip="`Copy to clipboard \n ${href}`"
+            v-tooltip="`Copy to clipboard \n ${url}`"
             class="ext-display-link__clip"
             right
             name="content_copy"
@@ -101,7 +101,8 @@ export default defineComponent({
 
     const prefix = props.showPrefix ? props.prefix : "";
     const suffix = props.showSuffix ? props.suffix : "";
-    const url = `${prefix}${props.value}${suffix}`;
+    const displayUrl = `${prefix}${props.value}${suffix}`;
+    const url = `${props.prefix || ""}${props.value}${props.suffix || ""}`;
     const protocol = protocols[props.kind];
     const href = `${protocol}${url}`;
     const verb = verbs[props.kind];
@@ -110,6 +111,7 @@ export default defineComponent({
       verb,
       href,
       url,
+      displayUrl,
       copyToClipboard,
     };
 
