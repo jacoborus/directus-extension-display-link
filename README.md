@@ -1,6 +1,6 @@
 # directus-extension-display-link
 
-Display URLs with an open in new tab icon link in Directus 9
+Display URLs with as links in Directus 9
 
 ![](https://raw.githubusercontent.com/jacoborus/directus-extension-display-link/main/screenshot.png)
 
