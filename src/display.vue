@@ -3,7 +3,7 @@
   <template v-else>
     <v-hover v-slot="{ hover }" class="ext-display-link">
       <div class="ext-display-link__wrapper">
-        <a :href="href" target="_blank" @click.stop>
+        <a :href="href" :target="target" @click.stop>
           <v-icon
             v-if="showLinkButton"
             v-tooltip="`${verb} ${url}`"
@@ -46,6 +46,7 @@ const props = withDefaults(
     showUrl?: boolean;
     font?: FontType;
     showClipboard: boolean;
+    openInNew: boolean;
     prefix?: string;
     suffix?: string;
     showPrefix?: boolean;
@@ -59,6 +60,7 @@ const props = withDefaults(
     showUrl: true,
     font: "sans-serif",
     showClipboard: true,
+    openInNew: true,
     prefix: "",
     suffix: "",
     showPrefix: false,
@@ -88,6 +90,7 @@ const url = `${props.prefix || ""}${props.value}${props.suffix || ""}`;
 const protocol = protocols[props.kind];
 const href = `${protocol}${url}`;
 const verb = verbs[props.kind];
+const target = props.openInNew ? "_blank" : undefined;
 
 async function copyToClipboard() {
   try {

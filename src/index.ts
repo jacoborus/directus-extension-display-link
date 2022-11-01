@@ -107,9 +107,24 @@ export default defineDisplay({
       type: "boolean",
       meta: {
         interface: "boolean",
-        width: "full",
+        width: "half",
         options: {
-          label: "Display a copy to clipboard button",
+          label: "Display a copy to clipboard",
+        },
+      },
+      schema: {
+        default_value: true,
+      },
+    },
+    {
+      field: "openInNew",
+      name: "Open in new tab",
+      type: "boolean",
+      meta: {
+        interface: "boolean",
+        width: "half",
+        options: {
+          label: "Open link in new tab",
         },
       },
       schema: {
