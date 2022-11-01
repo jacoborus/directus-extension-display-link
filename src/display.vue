@@ -1,7 +1,7 @@
 <template>
   <value-null v-if="value === null" />
   <template v-else>
-    <v-hover v-slot="{hover}" class="ext-display-link">
+    <v-hover v-slot="{ hover }" class="ext-display-link">
       <div class="ext-display-link__wrapper">
         <a :href="href" target="_blank" @click.stop>
           <v-icon
@@ -13,7 +13,9 @@
           />
         </a>
 
-        <span v-if="showUrl" :class="[font]" class="ext-display-link__url">{{displayUrl}}</span>
+        <span v-if="showUrl" :class="[font]" class="ext-display-link__url">
+          {{ displayUrl }}
+        </span>
 
         <transition name="fade">
           <v-icon
@@ -30,9 +32,39 @@
   </template>
 </template>
 
-<script lang="ts">
-import {defineComponent} from "vue";
-import {useStores} from "@directus/extensions-sdk";
+<script setup lang="ts">
+import { useStores } from "@directus/extensions-sdk";
+
+type FontType = "sans-serif" | "serif" | "monospace";
+
+const props = withDefaults(
+  defineProps<{
+    value?: string;
+    kind?: string;
+    showLinkButton?: boolean;
+    icon?: string;
+    showUrl?: boolean;
+    font?: FontType;
+    showClipboard: boolean;
+    prefix?: string;
+    suffix?: string;
+    showPrefix?: boolean;
+    showSuffix?: boolean;
+  }>(),
+  {
+    value: null,
+    kind: "url",
+    showLinkButton: true,
+    icon: "open_in_new",
+    showUrl: true,
+    font: "sans-serif",
+    showClipboard: true,
+    prefix: "",
+    suffix: "",
+    showPrefix: false,
+    showSuffix: false,
+  }
+);
 
 const protocols = {
   url: "",
@@ -46,94 +78,34 @@ const verbs = {
   tel: "Call",
 };
 
-export default defineComponent({
-  props: {
-    value: {
-      type: String,
-      default: null,
-    },
-    kind: {
-      type: String,
-      default: "url",
-    },
-    showLinkButton: {
-      type: Boolean,
-      default: true,
-    },
-    icon: {
-      type: String,
-      default: "open_in_new",
-    },
-    showUrl: {
-      type: Boolean,
-      default: true,
-    },
-    font: {
-      type: String,
-      default: "sans-serif",
-      validator: (value: string) =>
-        ["sans-serif", "serif", "monospace"].includes(value),
-    },
-    showClipboard: {
-      type: Boolean,
-      default: true,
-    },
-    prefix: {
-      type: String,
-      default: "",
-    },
-    suffix: {
-      type: String,
-      default: "",
-    },
-    showPrefix: {
-      type: Boolean,
-      default: false,
-    },
-    showSuffix: {
-      type: Boolean,
-      default: false,
-    },
-  },
-  setup(props) {
-    const {useNotificationsStore} = useStores();
-    const notifStore = useNotificationsStore();
+const { useNotificationsStore } = useStores();
+const notifStore = useNotificationsStore();
 
-    const prefix = props.showPrefix ? props.prefix : "";
-    const suffix = props.showSuffix ? props.suffix : "";
-    const displayUrl = `${prefix}${props.value}${suffix}`;
-    const url = `${props.prefix || ""}${props.value}${props.suffix || ""}`;
-    const protocol = protocols[props.kind];
-    const href = `${protocol}${url}`;
-    const verb = verbs[props.kind];
+const prefix = props.showPrefix ? props.prefix : "";
+const suffix = props.showSuffix ? props.suffix : "";
+const displayUrl = `${prefix}${props.value}${suffix}`;
+const url = `${props.prefix || ""}${props.value}${props.suffix || ""}`;
+const protocol = protocols[props.kind];
+const href = `${protocol}${url}`;
+const verb = verbs[props.kind];
 
-    return {
-      verb,
-      href,
-      url,
-      displayUrl,
-      copyToClipboard,
-    };
-
-    async function copyToClipboard() {
-      try {
-        await navigator?.clipboard?.writeText(href);
-        notifStore.add({
-          title: "Copied!",
-          type: "success",
-        });
-      } catch (err: unknown) {
-        if (err instanceof Error) {
-          notifStore.add({
-            title: "Error!",
-            type: "error",
-            error: err,
-          });
-        }
-      }
+async function copyToClipboard() {
+  try {
+    await navigator?.clipboard?.writeText(href);
+    notifStore.add({
+      title: "Copied!",
+      type: "success",
+    });
+  } catch (err: unknown) {
+    if (err instanceof Error) {
+      notifStore.add({
+        title: "Error!",
+        type: "error",
+        error: err,
+      });
     }
-  },
-});
+  }
+}
 </script>
 
 <style>
