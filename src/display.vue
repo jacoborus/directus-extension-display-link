@@ -94,7 +94,7 @@ const target = props.openInNew ? "_blank" : undefined;
 
 async function copyToClipboard() {
   try {
-    await navigator?.clipboard?.writeText(href);
+    await navigator?.clipboard?.writeText(url);
     notifStore.add({
       title: "Copied!",
       type: "success",
