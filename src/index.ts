@@ -195,5 +195,5 @@ export default defineDisplay({
       },
     },
   ],
-  types: ["string", "text"],
+  types: ["string", "text", "uuid", "integer"],
 });
