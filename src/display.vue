@@ -39,18 +39,18 @@ type FontType = "sans-serif" | "serif" | "monospace";
 
 const props = withDefaults(
   defineProps<{
-    value?: string;
-    kind?: string;
-    showLinkButton?: boolean;
-    icon?: string;
-    showUrl?: boolean;
-    font?: FontType;
+    value: string | number | null;
+    kind: "url" | "email" | "tel";
+    showLinkButton: boolean;
+    icon: string;
+    showUrl: boolean;
+    font: FontType;
     showClipboard: boolean;
     openInNew: boolean;
-    prefix?: string;
-    suffix?: string;
-    showPrefix?: boolean;
-    showSuffix?: boolean;
+    prefix: string;
+    suffix: string;
+    showPrefix: boolean;
+    showSuffix: boolean;
   }>(),
   {
     value: null,
@@ -65,7 +65,7 @@ const props = withDefaults(
     suffix: "",
     showPrefix: false,
     showSuffix: false,
-  }
+  },
 );
 
 const protocols = {
