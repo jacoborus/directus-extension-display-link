@@ -4,3 +4,4 @@ src
 !dist
 !dist/*.ts
 .eslintrc.*
+*.png

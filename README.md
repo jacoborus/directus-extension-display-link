@@ -1,20 +1,15 @@
-# directus-extension-display-link
+# Display Link extension for Directus
 
-Display URLs with as links in Directus 9
-
-![](https://raw.githubusercontent.com/jacoborus/directus-extension-display-link/main/screenshot.png)
-
-![](https://raw.githubusercontent.com/jacoborus/directus-extension-display-link/main/screenshot-options.png)
+Display URLs, phone numbers, and emails with a link button in
+[Directus](https://directus.io)
 
 ## Install
 
-```sh
-npm install directus-extension-display-link
-```
-or
+Navigate to the Directus Marketplace, search for "display-link", navigate to the
+extension page, and click "Install Extension"
 
-```sh
-yarn add directus-extension-display-link
-```
+![](https://raw.githubusercontent.com/jacoborus/directus-extension-display-link/main/screenshot.png)
 
-Restart Directus
+![](https://raw.githubusercontent.com/jacoborus/directus-extension-display-link/main/screenshot-list.png)
+
+![](https://raw.githubusercontent.com/jacoborus/directus-extension-display-link/main/screenshot-options.png)
