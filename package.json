@@ -1,7 +1,8 @@
 {
   "name": "directus-extension-display-link",
-  "description": "Display URLs, phone numbers, and emails with a link button in Directus 9",
-  "version": "1.6.1",
+  "description": "Display URLs, phone numbers, and emails with a link button in Directus",
+  "version": "1.7.0",
+  "icon": "link",
   "author": "Jacobo Tabernero Rey <jacoborus@gmail.com>",
   "keywords": [
     "directus",
@@ -9,32 +10,35 @@
     "directus-custom-display",
     "link",
     "url",
-    "display-link",
-    "display-url"
+    "email",
+    "telephone",
+    "display-url",
+    "display-phone-number",
+    "display-telephone"
   ],
   "directus:extension": {
     "type": "display",
     "path": "dist/index.js",
     "source": "src/index.ts",
-    "host": "^9.4.3"
+    "host": "^10.10.10"
   },
   "scripts": {
     "build": "directus-extension build",
-    "dev": "directus-extension build --watch -o ../extensions/displays/link/index.js",
+    "dev": "directus-extension build --watch -o --no-minify",
     "prepublish": "npm run build",
     "lint": "eslint"
   },
   "devDependencies": {
-    "@directus/extensions-sdk": "^9.19.2",
-    "@typescript-eslint/eslint-plugin": "^5.42.0",
-    "@typescript-eslint/parser": "^5.42.0",
-    "eslint": "^8.26.0",
-    "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-prettier": "^4.2.1",
+    "@directus/extensions-sdk": "12.1.4",
+    "@typescript-eslint/eslint-plugin": "8.20.0",
+    "@typescript-eslint/parser": "8.20.0",
+    "eslint": "9.18.0",
+    "eslint-config-prettier": "10.0.1",
+    "eslint-plugin-prettier": "5.2.2",
     "eslint-plugin-vue": "^9.7.0",
-    "prettier": "^2.7.1",
-    "typescript": "^4.5.5",
-    "vue": "^3.2.28"
+    "prettier": "3.4.2",
+    "typescript": "5.7.3",
+    "vue": "^3.5.13"
   },
   "repository": {
     "type": "git",
