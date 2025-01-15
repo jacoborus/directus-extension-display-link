@@ -24,7 +24,7 @@
   },
   "scripts": {
     "build": "directus-extension build",
-    "dev": "directus-extension build --watch -o --no-minify",
+    "dev": "directus-extension build --watch --no-minify",
     "prepublish": "npm run build",
     "lint": "eslint"
   },

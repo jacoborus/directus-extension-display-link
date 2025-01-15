@@ -1,5 +1,5 @@
 <template>
-  <value-null v-if="value === null" />
+  <v-null v-if="value === null" />
   <template v-else>
     <v-hover v-slot="{ hover }" class="ext-display-link">
       <div class="ext-display-link__wrapper">
@@ -86,7 +86,7 @@ const notifStore = useNotificationsStore();
 const prefix = props.showPrefix ? props.prefix : "";
 const suffix = props.showSuffix ? props.suffix : "";
 const displayUrl = `${prefix}${props.value}${suffix}`;
-const url = `${props.prefix || ""}${props.value}${props.suffix || ""}`;
+const url = `${props.prefix || ""}${props.value ?? ""}${props.suffix || ""}`;
 const protocol = protocols[props.kind];
 const href = `${protocol}${url}`;
 const verb = verbs[props.kind];
