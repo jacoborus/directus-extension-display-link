@@ -5,8 +5,10 @@ Display URLs, phone numbers, and emails with a link button in
 
 ## Install
 
-Navigate to the Directus Marketplace, search for "display-link", navigate to the
-extension page, and click "Install Extension"
+Search for "display link" in the Marketplace of your app settings, navigate to
+the extension page, and click "Install Extension"
+
+## Screenshots
 
 ![](https://raw.githubusercontent.com/jacoborus/directus-extension-display-link/main/screenshot.png)
 

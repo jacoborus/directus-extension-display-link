@@ -1,7 +1,7 @@
 {
   "name": "directus-extension-display-link",
   "description": "Display URLs, phone numbers, and emails with a link button in Directus",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "icon": "link",
   "author": "Jacobo Tabernero Rey <jacoborus@gmail.com>",
   "keywords": [
@@ -20,7 +20,7 @@
     "type": "display",
     "path": "dist/index.js",
     "source": "src/index.ts",
-    "host": "^10.10.10"
+    "host": ">=10.10.10"
   },
   "scripts": {
     "build": "directus-extension build",
